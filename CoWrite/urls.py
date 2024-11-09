@@ -16,7 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from login.views import SignupView, LoginView
+from django.urls import path, include
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+     path('api/', include('login.urls')),  # Replace with your app name
 ]
