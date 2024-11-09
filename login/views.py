@@ -25,8 +25,8 @@ class SignupView(APIView):
                 return Response({
                     "refresh": str(refresh),
                     "access": str(refresh.access_token),
-                    "Username ": str(name),
-                    "Email ": str(email)
+                    "username ": str(name),
+                    "email ": str(email)
                 }, status=status.HTTP_200_OK)
             return Response({"error": "Invalid credentials"}, status=status.HTTP_401_UNAUTHORIZED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -46,7 +46,7 @@ class LoginView(APIView):
             return Response({
                 "refresh": str(refresh),
                 "access": str(refresh.access_token),
-                "Username ": str(name),
-                "Email ": str(email)
+                "username ": str(name),
+                "email ": str(email)
             }, status=status.HTTP_200_OK)
         return Response({"error": "Invalid credentials"}, status=status.HTTP_401_UNAUTHORIZED)
