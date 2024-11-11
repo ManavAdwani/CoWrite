@@ -22,5 +22,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-     path('api/', include('login.urls')),  # Replace with your app name
+    path('api/', include('login.urls')),  # Replace with your app name
+    path('api/', include('textpad.urls')),
 ]
