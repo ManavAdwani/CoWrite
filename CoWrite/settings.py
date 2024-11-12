@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-r_*i%$qcjkp5aafbe^tr&_x(cg)5m6!f_-53)b)xz9=0171znq
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1',]
 
 
 # Application definition
@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'login',
     'textpad',
-    'ckeditor'
+    'ckeditor',
+    'channels',
 ]
 
 MIDDLEWARE = [
@@ -72,6 +73,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'CoWrite.wsgi.application'
+ASGI_APPLICATION = 'CoWrite.asgi.application'
+
 
 
 # Database
@@ -139,3 +142,8 @@ REST_FRAMEWORK = {
     ),
 }
 
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer"
+    }
+}
