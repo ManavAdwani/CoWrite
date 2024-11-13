@@ -3,13 +3,15 @@ from django.contrib.auth import get_user_model
 from ckeditor.fields import RichTextField
 from django.conf import settings
 # from .models import Documents
+from django_quill.fields import QuillField
+
 import uuid
 
 User = get_user_model()
 
 class Documents(models.Model):
     title = models.CharField(max_length=255)  # Document title
-    content = RichTextField()   # Main text content of the document
+    content = QuillField()   # Main text content of the document
     created_at = models.DateTimeField(auto_now_add=True)  # Date created
     updated_at = models.DateTimeField(auto_now=True)  # Date last updated
     created_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name='created_documents')

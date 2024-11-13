@@ -4,9 +4,14 @@ from rest_framework import status
 from .models import Documents, Snapshot
 from django.contrib.auth import get_user_model
 from .models import Documents, Delta, Snapshot
+from django.shortcuts import render
 
 
 User = get_user_model()
+
+def textpad(request):
+    return render(request, 'textpad/index.html')
+
 
 class SaveText(APIView):
     def post(self, request):

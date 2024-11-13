@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Co Write - Write Together, Create Together.</title>
+    <link rel="stylesheet" href="{% static 'login/css/index.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Texturina:ital,opsz,wght@0,12..72,100..900;1,12..72,100..900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <h1>Co Write</h1>
+    <ol type="1">
+        <li>Get started by signing up <a href="#">here</a>.</li>
+        <li>Create a document and start editing.</li>
+    </ol>
+
+    <!-- Button container -->
+    <div class="button-container">
+       <a href="{% url 'loginpage' %}"><button class="login">Login</button></a> 
+        <button class="signup">Sign Up</button>
+    </div>
+
+    <!-- Footer links -->
+    <div class="footer">
+        <a href="#"><span>&#x1F5E3;</span> Feedback</a>
+        <a href="#"><span>&#x1F50E;</span> Get support →</a>
+    </div>
+
+    <script src="{% static 'login/js/index.js' %}"></script>
+</body>
+
+</html>

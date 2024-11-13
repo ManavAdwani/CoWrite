@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Quill Editor</title>
+    <link href="https://cdn.jsdelivr.net/npm/quill@1.3.7/dist/quill.snow.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" integrity="sha512-dPXYcDub/aeb08c63jRq/k6GaKccl256JQy/AnOq7CAnEZ9FzSL9wSbcZkMp4R26vBsMLFYH4kQ67/bbV8XaCQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+         .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px auto;
+            width: 80%;
+        }
+        /* Style for editor container */
+        #editor {
+            max-width: 90%;
+            margin: 50px auto;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        /* Styling for the Quill toolbar */
+        .ql-toolbar.ql-snow {
+            
+            border: none;
+            background-color: #f5f5f5;
+            border-radius: 8px 8px 0 0;
+            padding: 10px;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Style for the editor area */
+        .ql-container.ql-snow {
+            border: none;
+            border-radius: 0 0 8px 8px;
+            font-size: 16px;
+            line-height: 1.5;
+            padding: 20px;
+            min-height: 300px;
+            color: #333;
+            background-color: #fefefe;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Style for the text in the editor */
+        .ql-editor p {
+            margin: 10px 0;
+        }
+
+        /* Button styling within toolbar */
+        .ql-toolbar button {
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 6px;
+            margin-right: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Button hover effect */
+        .ql-toolbar button:hover {
+            background-color: #e0e0e0;
+        }
+
+        /* Active button styling */
+        .ql-toolbar button.ql-active {
+            background-color: #007bff;
+            color: #fff;
+            border-color: #007bff;
+        }
+
+        /* Drop-down menu styling */
+        .ql-toolbar .ql-picker {
+            color: #333;
+        }
+        .ql-toolbar .ql-picker-options {
+            background-color: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .document-title {
+            width: 50%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            outline: none;
+            font-weight: bold;
+            color: #333;
+        }
+        .container i {
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        /* Optional: add a hover effect on icons */
+        .container i:hover {
+            color: #007bff;
+        }
+        .document-title::placeholder {
+            color: #999;
+            font-weight: normal;
+        }
+
+    </style>
+</head>
+{% include 'textpad/navbar.html'%}
+<body>
+    <div class="container">
+        <!-- Document title input aligned to the left -->
+        <input type="text" class="document-title" placeholder="Document Title">
+    
+        <!-- Icons aligned to the right -->
+        <div style="display:flex;gap:20px;">
+            <i class="bi bi-chat-left-text"  style="font-size: 20px;"></i>
+            <i class="bi bi-telephone-forward-fill" style="font-size: 17px;"></i>
+            <i class="bi bi-person-fill-add" style="font-size: 20px;"></i>
+        </div>
+    </div>
+
+    <div id="editor">
+        <p>Hello World!</p>
+    </div>
+
+    <!-- Include Quill library -->
+    <script src="https://cdn.jsdelivr.net/npm/quill@1.3.7/dist/quill.min.js"></script>
+
+    <!-- Initialize Quill with custom toolbar -->
+    <script>
+        const quill = new Quill('#editor', {
+            theme: 'snow',
+            modules: {
+                toolbar: [
+                    [{ 'font': [] }],              // Font selection
+                    [{ 'header': [1, 2, 3, false] }],  // Header styles
+                    ['bold', 'italic', 'underline'],  // Basic text styles
+                    [{ 'list': 'ordered' }, { 'list': 'bullet' }],  // Lists
+                    [{ 'align': [] }],               // Alignment
+                    [{ 'color': [] }, { 'background': [] }],  // Text and background colors
+                    ['link', 'image', 'video'],      // Insert options
+                    ['clean']                        // Remove formatting
+                ]
+            }
+        });
+    </script>
+</body>
+</html>

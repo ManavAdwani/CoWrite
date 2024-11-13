@@ -8,6 +8,19 @@ from .models import User
 from .serializers import UserSerializer
 from rest_framework_simplejwt.tokens import RefreshToken
 
+from django.shortcuts import render
+
+def index(request):
+    return render(request, 'login/index.html')
+
+def loginpage(request):
+    return render(request, 'login/loginpage.html')
+
+def signuppage(request):
+    return render(request, 'login/signuppage.html')
+
+
+
 class SignupView(APIView):
     permission_classes = [AllowAny]
 
@@ -37,8 +50,8 @@ class LoginView(APIView):
     def post(self, request):
         email = request.data.get("email")
         password = request.data.get("password")
+
         user = authenticate(request, email=email, password=password)
-        name = user.username
 
         if user:
             # Generate tokens
@@ -46,7 +59,9 @@ class LoginView(APIView):
             return Response({
                 "refresh": str(refresh),
                 "access": str(refresh.access_token),
-                "username ": str(name),
-                "email ": str(email)
+                "username": user.username,  # No need to create a separate variable for the username
+                "email": user.email
             }, status=status.HTTP_200_OK)
+        
+        # Return an error response if authentication fails
         return Response({"error": "Invalid credentials"}, status=status.HTTP_401_UNAUTHORIZED)
